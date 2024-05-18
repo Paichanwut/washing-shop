@@ -11,3 +11,66 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.container {
+  width: 300px;
+  padding: 15px;
+  background: #ffffff;
+  text-align: center;
+  border: 1px solid #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.container .title {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.container .time {
+  color: #40B3A2;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+.subscribe-button {
+  display: inline-block;
+  padding: 5px 0;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  width: 50%;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.subscribe-button:hover {
+  opacity: .85;
+}
+
+.ribbon-wrap {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: -20px;
+  left: 50px;
+  pointer-events: none;
+}
+
+.ribbon {
+  width: 200px;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 4px 0;
+  border: 1px solid #000;
+  color: #fff;
+  position: absolute;
+  transform: rotate(-45deg);
+  right: -10px;
+  top: 55%;
+}

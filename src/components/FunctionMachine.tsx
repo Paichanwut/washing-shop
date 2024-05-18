@@ -3,20 +3,6 @@ import error from '../image/error.svg';
 import finish from '../image/finish.svg';
 import working from '../image/working.svg';
 import axios from 'axios';
-const lineNotifyToken = "GujWzKTeQwZjO2gV5FriJEWoTdG0ghbQIZw2OwfKjD4";
-
-export const getButtonClass = (val: string) => {
-    switch (val) {
-        case 'working':
-            return 'btn btn-warning';
-        case 'error':
-            return 'btn btn-danger';
-        case 'finish':
-            return 'btn btn-success';
-        default:
-            return 'btn btn-primary';
-    }
-};
 
 export const statusMachine = (val: string) => {
     switch (val) {
@@ -31,16 +17,16 @@ export const statusMachine = (val: string) => {
     }
 }
 
-export const getBadgeClass = (val: string) => {
+export const getColor = (val: string) => {
     switch (val) {
         case 'working':
-            return 'badge bg-warning';
+            return '#FFD700';
         case 'error':
-            return 'badge bg-danger';
+            return '#B22222';
         case 'finish':
-            return 'badge bg-success';
+            return '#3CB371';
         default:
-            return 'badge bg-primary';
+            return '#4682B4';
     }
 };
 
@@ -65,17 +51,8 @@ export const formatTimeLeft = (milliseconds: number) => {
 
 export const sendLineNotification = async (message: string) => {
     try {
-        await axios.post(
-            'https://notify-api.line.me/api/notify',
-            new URLSearchParams({ message }),
-            {
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': `Bearer ${lineNotifyToken}`
-                }
-            }
-        );
+        await axios.post('http://localhost:5000/notify', { message });
     } catch (error) {
         console.error('Failed to send Line notification:', error);
     }
-}
+};

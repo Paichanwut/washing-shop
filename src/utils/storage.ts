@@ -20,6 +20,8 @@ export const initializeData = (): void => {
     { id: "7", status: statusMachine[0], endTime: 0 },
     { id: "8", status: statusMachine[2], endTime: 0 },
     { id: "9", status: statusMachine[3], endTime: 0 },
+    { id: "10", status: statusMachine[0], endTime: 0 },
+    { id: "11", status: statusMachine[0], endTime: 0 },
   ];
   saveToLocalStorage("machines", initialData);
 };

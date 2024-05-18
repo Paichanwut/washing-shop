@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {
     formatTimeLeft,
-    getBadgeClass,
-    getButtonClass,
+    getColor,
+    // getButtonClass,
     sendLineNotification,
     statusMachine,
     statusMachineIcon,
@@ -53,30 +53,25 @@ const Machine: React.FC<MachineProps> = ({ machine, updateMachine }) => {
 
 
     return (
-        <div className="col-sm-6 col-md-4">
-            <div className="card p-4">
-                <div className="row">
-                    <div className="col-4 d-flex justify-content-center">
-                        <img
-                            src={statusMachineIcon(machine.status)}
-                            style={{ width: "100px" }}
-                        />
+        <div className="col-sm-6 col-md-4 col-lg-3">
+            <div className="p-4">
+                <div className="container">
+                    <img
+                        className="mt-2"
+                        src={statusMachineIcon(machine.status)}
+                        style={{ width: "100px" }}
+                    />
+                    <div className="title">
+                        Machine No {machine.id}
                     </div>
-                    <div className="col">
-                        <p className="d-flex justify-content-between">
-                            <h4>
-                                Machine No {machine.id}
-                            </h4>
-
-                            <span> Status : {" "}
-                                <span className={`${getBadgeClass(machine.status)} p-2 fs-7`}>
-                                    {machine.status}
-                                </span>
-                            </span>
-                        </p>
-                        <p>Time : {formatTimeLeft(runtime)}</p>
+                    <p className="time">Time : {formatTimeLeft(runtime)}</p>
+                    <div className="ribbon-wrap">
+                        <div className="ribbon" style={{ background: getColor(machine.status) }}> {machine.status}</div>
+                    </div>
+                    <div>
                         <button
-                            className={getButtonClass(machine.status)}
+                            className={`subscribe-button`}
+                            style={{ background: getColor(machine.status) }}
                             onClick={handleStart}
                             disabled={
                                 machine.status === "working" || machine.status === "error"
