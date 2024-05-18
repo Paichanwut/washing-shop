@@ -29,10 +29,17 @@ const MachineList: React.FC = () => {
     };
 
     return (
-        <div>
-            {machines.map(machine => (
-                <Machine key={machine.id} machine={machine} updateMachine={updateMachine} />
-            ))}
+        <div className='card h-100'>
+            <div className='card-header border-0 text-center'>
+                <h1>Laundromat Management System</h1>
+            </div>
+            <div className='card-body'>
+                <div className='row g-3' >
+                    {machines.map(machine => (
+                        <Machine key={machine.id} machine={machine} updateMachine={updateMachine} />
+                    ))}
+                </div>
+            </div>
         </div>
     );
 };
