@@ -3,6 +3,7 @@ import {
     formatTimeLeft,
     getBadgeClass,
     getButtonClass,
+    sendLineNotification,
     statusMachine,
     statusMachineIcon,
 } from "./FunctionMachine";
@@ -23,7 +24,7 @@ const Machine: React.FC<MachineProps> = ({ machine, updateMachine }) => {
 
     const handleStart = () => {
         if (machine.status === "available") {
-            const endTime = Date.now() + 30 * 60 * 1000;
+            const endTime = Date.now() + 1.1 * 60 * 1000;
             updateMachine(machine.id, "working", endTime);
             setAlertShown(false);
         } else {
@@ -40,7 +41,7 @@ const Machine: React.FC<MachineProps> = ({ machine, updateMachine }) => {
                     updateMachine(machine.id, "finish", 0);
                     clearInterval(interval);
                 } else if (timeLeft <= 60 * 1000 && !alertShown) {
-                    alert(`Machine ${machine.id} has less than 1 minute remaining!`);
+                    sendLineNotification(`Machine No ${machine.id} has less than 1 minute remaining!`);
                     setAlertShown(true);
                 }
             }, 1000);
