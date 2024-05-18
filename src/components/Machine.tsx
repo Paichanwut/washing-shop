@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
     formatTimeLeft,
     getColor,
-    // getButtonClass,
     sendLineNotification,
     statusMachine,
     statusMachineIcon,
@@ -24,7 +23,7 @@ const Machine: React.FC<MachineProps> = ({ machine, updateMachine }) => {
 
     const handleStart = () => {
         if (machine.status === "available") {
-            const endTime = Date.now() + 1.1 * 60 * 1000;
+            const endTime = Date.now() + 3 * 60 * 1000;
             updateMachine(machine.id, "working", endTime);
             setAlertShown(false);
         } else {
@@ -46,6 +45,9 @@ const Machine: React.FC<MachineProps> = ({ machine, updateMachine }) => {
                 }
             }, 1000);
             return () => clearInterval(interval);
+        } else if (machine.status === "finish") {
+            setRuntime(0)
+            sendLineNotification(`Machine No ${machine.id} has finished washing`);
         } else {
             setRuntime(0)
         }
