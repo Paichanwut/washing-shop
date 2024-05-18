@@ -23,7 +23,7 @@ const Machine: React.FC<MachineProps> = ({ machine, updateMachine }) => {
 
     const handleStart = () => {
         if (machine.status === "available") {
-            const endTime = Date.now() + 1 * 60 * 1000; // ตั้งเวลาจบใน 30 นาที
+            const endTime = Date.now() + 30 * 60 * 1000;
             updateMachine(machine.id, "working", endTime);
             setAlertShown(false);
         } else {
