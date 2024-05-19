@@ -60,6 +60,7 @@ const Machine: React.FC<MachineProps> = ({ machine, updateMachine }) => {
                 <div className="container">
                     <img
                         className="mt-2"
+                        alt="logo"
                         src={statusMachineIcon(machine.status)}
                         style={{ width: "100px" }}
                     />

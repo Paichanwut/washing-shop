@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Machine from './Machine';
 import { getFromLocalStorage, saveToLocalStorage, initializeData } from '../utils/storage';
-
+import NavberMachine from './Navber';
 interface Machine {
     id: string;
     status: string;
@@ -9,6 +9,7 @@ interface Machine {
 }
 
 const MachineList: React.FC = () => {
+
     const [machines, setMachines] = useState<Machine[]>([]);
 
     useEffect(() => {
@@ -29,18 +30,14 @@ const MachineList: React.FC = () => {
     };
 
     return (
-        <div className='card h-100'>
-            <div className='card-header border-0 text-center'>
-                <h1>Laundromat Management System</h1>
+        <>
+            <NavberMachine />
+            <div className='row g-3'>
+                {machines.map(machine => (
+                    <Machine key={machine.id} machine={machine} updateMachine={updateMachine} />
+                ))}
             </div>
-            <div className='card-body'>
-                <div className='row g-3' >
-                    {machines.map(machine => (
-                        <Machine key={machine.id} machine={machine} updateMachine={updateMachine} />
-                    ))}
-                </div>
-            </div>
-        </div>
+        </>
     );
 };
 
